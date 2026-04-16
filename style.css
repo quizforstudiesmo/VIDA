@@ -1,0 +1,701 @@
+/* Importiamo Montserrat: pesi leggero (300) per eleganza, regolare (400) per lettura e nero (900) per energia */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,900;1,900&display=swap');
+
+/* --- STRUTTURA GENERALE DELLA PAGINA --- */
+body {
+    /* Montserrat è molto più arioso e "viaggio" rispetto al Bebas */
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* NUOVO WRAPPER: Imposta il margine e centra il contenuto su TUTTI gli schermi */
+.page-wrapper {
+    max-width: 1400px; /* Larghezza massima del sito */
+    margin: 0 auto; /* Centra il wrapper nella pagina */
+    padding: 20px; /* Margine interno che crea spazio dai lati del browser */
+    background-color: #ffffff; /* Sfondo del contenuto del sito (all'interno del margine) */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Leggera ombra per staccare dal body */
+    min-height: 100vh;
+}
+
+/* Contenitore standard per le sezioni interne (NON il wrapper principale) */
+.container {
+    max-width: 1200px;
+    margin: 24px;
+    padding: 0 10px; /* Riduci il padding qui, è gestito dal page-wrapper */
+}
+
+h1, h2, h3 {
+    /* Usiamo il peso massimo (900) e il corsivo (italic) per trasmettere velocità ed energia */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    letter-spacing: -1px; /* Rende il titolo più compatto e moderno */
+}
+
+p {
+    /* Usiamo il peso leggero (300) per dare un tocco di eleganza e pulizia */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 200;
+    font-size: 1.1rem;
+}
+
+a, button, .play-button {
+    /* Per i bottoni usiamo un peso deciso così da invitare all'azione */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 0;
+
+}
+/* --- HEADER E NAVIGAZIONE --- */
+.Page_header {
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative; /* Necessario per posizionare il menu */
+    z-index: 1000;
+}
+
+
+
+
+
+.headerComponent_container {
+    display: flex;
+    justify-content: space-between; /* Logo a sx, Toggle a dx */
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-direction: row !important; /* Impedisce che vadano in colonna su smartphone */
+}
+
+
+.logo-link img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0; /* Forza il logo a stare a sinistra */
+}
+
+
+/* Icona Hamburguesa (Tasto) */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: auto; /* Spinge il tasto verso destra se il contenitore cambia */
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color:#E52D40;
+    border-radius: 2px;
+}
+
+/* Menu Verticale (Tendina) */
+.menu {
+    position: absolute;
+    top: 100%; /* Sotto l'header */
+    right: 20px;
+    background-color: #ffff;
+    width: 240px;
+    display: none; /* Si attiva con .active */
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    z-index: 9999;
+}
+
+.menu.active {
+    display: flex !important;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 15px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    display: block;
+    text-align: right; /* Testo allineato a destra nel menu */
+}
+
+/* Rimuovi eventuali regole vecchie che forzano il logo al centro */
+.header-title-center {
+    display: none;
+}
+/* --- SEZIONI PRINCIPALI --- */
+
+/* Hero Section - Video (Modificato per usare 100% dell'altezza del contenitore) */
+.spazio-foto {
+    width: 100%;
+    /* Riduci l'altezza per evitare che sia tagliato sopra/sotto */
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    background-color: #000; /* Sfondo nero per il video */
+}
+
+.spazio-foto .photo-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#video-element {
+    /* Assicura che il video copra l'area e sia centrato */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+
+/* Hero Section - Contenuto Testo */
+.spazio-contenuto {
+    width: 100%;
+    text-align: center;
+    background-color: #ffffff;
+
+
+}
+
+.spazio-contenuto .hero-content {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.spazio-contenuto h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.spazio-contenuto p {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.spazio-contenuto .play-button {
+    display: inline-block;
+    padding: 15px 30px; /* Pulsante più grande */
+    background-color: #5BB318;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.5rem; /* Testo pulsante più grande */
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.spazio-contenuto .play-button:hover {
+    background-color: orchid;
+    transform: translateY(-2px);
+}
+
+/* Promozione Gioco (Immagine/Testo) */
+.game-promotion {
+    background-color: #f9f9f9; /* Sfondo leggermente grigio per stacco */
+    padding: 50px 20px;
+}
+
+.promotion-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px; /* Aumento lo spazio tra gli elementi */
+    max-width: 1000px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Assicura che gli elementi vadano a capo su mobile */
+}
+
+.text-content {
+    flex: 1 1 40%; /* Base flessibile per il testo */
+    text-align: left;
+    min-width: 300px; /* Larghezza minima per evitare schiacciamento */
+}
+
+.image-content {
+    flex: 1 1 40%; /* Base flessibile per l'immagine */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+}
+
+
+.image-content2 {
+    /* Stile specifico per la pagina game.html */
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.image-content img, .image-content2 img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Extra Section */
+.extra-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #E52D40; /* Colore di enfasi */
+    color: white;
+    border-radius: 20px;
+}
+
+.extra-section h3 {
+    color: white;
+    margin-bottom: 0;
+}
+
+/* Tre Sezioni/Colonne */
+.three-sections {
+    background-color: #ffffff;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.three-sections .row {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.three-sections .section {
+    flex: 1 1 300px; /* Base flessibile per le colonne */
+    padding: 25px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.three-sections .section:hover {
+    transform: translateY(-5px);
+}
+
+.three-sections .section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* --- FOOTER E SOCIAL --- */
+.site-footer {
+    background: #FFD23F; /* Colore di enfasi opposto */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    border-radius: 20px;
+}
+.social-section {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 10px;
+}
+
+.social-item {
+    text-align: center;
+}
+
+.social-logo {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+    transition: transform 0.3s ease;
+}
+.social-logo:hover {
+    transform: scale(1.1);
+}
+.social-item p a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+
+/* --- FAQ / PIATTAFORME (Reindirizzati al flusso standard) --- */
+.domande, .piattaforme {
+    padding: 40px 20px;
+    background-color: #f4f4f4;
+    margin: 0; /* Rimuovi margini esterni inutili */
+}
+/* Il contenitore principale */
+.domande-sezione {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+
+.domande-sezione h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 3rem;
+}
+/* Modifica la riga 321 circa del tuo style.css */
+.pack-item {
+    display: flex;
+    align-items: center; /* Centra verticalmente la foto rispetto al testo, indipendentemente dalla lunghezza del testo */
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #eee;
+}
+/* Parte del testo (prende il 60% dello spazio) */
+.pack-text {
+    flex: 1;
+}
+
+.pack-text h2 {
+    margin-top: 0;
+    color: crimson; /* Un tocco di colore per il titolo del pack */
+}
+
+/* Parte dell'immagine (prende il 40% dello spazio) */
+.pack-image {
+    flex: 0 0 400px; /* Larghezza fissa per la foto su PC */
+}
+
+.pack-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover; /* Taglia la foto bene senza deformarla */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* --- MOBILE: Sul cellulare mettiamo la foto sopra il testo --- */
+@media (max-width: 768px) {
+    .pack-item {
+        flex-direction: column-reverse; /* Foto sopra, testo sotto */
+        text-align: center;
+    }
+
+    .pack-image {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+}
+/* --- SEZIONE CITTÀ --- */
+.citta-sezione {
+    padding: 60px 0;
+    background-color: #ffffff;
+}
+
+/* Slider Orizzontale */
+.citta-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 44px;
+    padding: 20px 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Nascondi scrollbar */
+.citta-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* Card Città */
+.citta-card {
+    flex: 0 0 280px; /* Larghezza fissa delle card */
+    scroll-snap-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: #000;
+    aspect-ratio: 3/4;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Carosello Immagini */
+.carosello-container {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: initial;
+    justify-content: initial;
+}
+
+.carosello-immagini img {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #ffffff;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+
+
+
+
+.carosello-immagini img.attiva {
+    opacity: 1;
+}
+
+/* Trova questa parte nel tuo CSS e modificala così */
+.citta-overlay-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: white;
+    z-index: 5;
+    /* Rimuovi pointer-events: none se presente, o usa questo: */
+    pointer-events: none;
+}
+
+/* IMPORTANTE: Riattiva i click solo sul bottone */
+.citta-overlay-text h3,
+.citta-overlay-text .play-button {
+    pointer-events: auto;
+    color: white;
+}
+
+.citta-card .play-button {
+    position: relative;
+    z-index: 10;
+    cursor: pointer;
+}
+.prezzo-old {
+    text-decoration: line-through;
+    opacity: 0.7;
+    font-size: 0.9rem;
+    margin-right: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .citta-card {
+        flex: 0 0 85%; /* Card più grandi su mobile */
+    }
+}
+/* --- SECCIÓN INFLUENCERS (MISMO ESTILO QUE CIUDADES) --- */
+.influencer-sezione {
+    padding: 60px 0;
+    background-color: #ffffff;
+}
+
+.influencer-grid {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+}
+
+.influencer-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.influencer-card {
+    flex: 0 0 300px;
+    scroll-snap-align: center;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transition: transform 0.7s ease;
+}
+/* 1. Rendiamo la card il punto di riferimento */
+.influencer-card {
+    position: relative; /* Importante per contenere lo stretched-link */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 2. Lo stretched-link si espande su tutta la card */
+.stretched-link::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10; /* Sta sopra alle immagini e al testo */
+    content: "";
+}
+
+/* 3. Estetica del link nel titolo */
+.influencer-overlay-text h3 a {
+    text-decoration: none;
+    color: white; /* O il colore che preferisci */
+}
+
+/* 4. Effetto Hover su tutta la card */
+.influencer-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+.influencer-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Reutilizamos el contenedor de carrusel */
+.influencer-card .carosello-container {
+    width: 100%;
+    height: 480px; /* Un poco más corto que las ciudades para dejar espacio al texto */
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.influencer-overlay-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    z-index: 2;
+}
+
+.influencer-overlay-text h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.influencer-info-bottom {
+    padding: 15px;
+    background: #fff;
+}
+
+.influencer-info-bottom p {
+    margin: 0;
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.3;
+}
+
+/* Ajuste responsive para influencers */
+@media (max-width: 768px) {
+    .influencer-card {
+        flex: 0 0 80%;
+    }
+}
+
+
+/* --- RESPONSIVITÀ --- */
+/* Tablet e Schermi Medi */
+@media (max-width: 992px) {
+    .page-wrapper {
+        padding: 10px; /* Riduci il margine del wrapper */
+    }
+    .headerComponent_container {
+        padding: 0 10px;
+    }
+    .menu ul {
+        gap: 10px;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Smartphone */
+@media (max-width: 768px) {
+    .Page_header {
+        padding: 0.5rem 0;
+    }
+    .domande-sezione .pack-item {
+        flex-direction:column !important; /* Forza il testo e la foto a stare vicini */
+        align-items: initial;
+        gap: 15px;
+        padding: 10px;
+    }
+    .pack-text {
+        flex: 1; /* Il testo prende lo spazio rimanente */
+        text-align: left; /* Mantiene il testo a sinistra invece di centrarlo */
+    }
+
+    .pack-image {
+        flex: 0 0 45%; /* La foto prende il 45% della larghezza del telefono */
+        max-width: 200px; /* Limite massimo per non farla diventare troppo grande */
+        height: auto;
+    }
+
+    .carosello-container {
+        height: 250px; /* Altezza fissa ridotta per il mobile */
+        background-color: #ffffff;
+    }
+
+    .headerComponent_container {
+        flex-direction: column; /* Impila logo e menu */
+        gap: 10px;
+        padding: 0 5px;
+    }
+    .menu {
+        width: 100%;
+        justify-content: center; /* Centra il menu */
+    }
+    .menu ul {
+        flex-wrap: wrap; /* Permette ai link di andare a capo */
+        justify-content: center;
+    }
+    .spazio-foto {
+        height: 30vh; /* Riduci l'altezza del video su mobile */
+    }
+    .promotion-container {
+        flex-direction: column; /* Impila le sezioni di testo e immagine */
+        gap: 20px;
+    }
+    .text-content {
+        order: 2;
+        text-align: center;
+        padding-right: 0;
+    }
+    .image-content, .image-content2 {
+        order: 1; /* Metti l'immagine sopra su mobile */
+        min-width: unset;
+    }
+    .three-sections .row {
+        flex-direction: column; /* Impila le colonne verticalmente */
+    }
+
+
+
+}
