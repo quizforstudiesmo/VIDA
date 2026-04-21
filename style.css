@@ -55,7 +55,7 @@ a, button, .play-button {
 }
 /* --- HEADER E NAVIGAZIONE --- */
 .Page_header {
-    background-color: #f4f4f4;
+    background-color: white;
     padding: 10px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: relative; /* Necessario per posizionare il menu */
@@ -78,7 +78,7 @@ a, button, .play-button {
 
 
 .logo-link img {
-    height: 70px;
+    height: 100px;
     width: auto;
     object-fit: contain;
     display: block;
@@ -101,7 +101,7 @@ a, button, .play-button {
 .menu-toggle .bar {
     width: 25px;
     height: 3px;
-    background-color:#E52D40;
+    background-color: #ff9016;
     border-radius: 2px;
 }
 
@@ -147,14 +147,15 @@ a, button, .play-button {
 /* --- SEZIONI PRINCIPALI --- */
 
 /* Hero Section - Video (Modificato per usare 100% dell'altezza del contenitore) */
-.spazio-foto {
-    width: 100%;
-    /* Riduci l'altezza per evitare che sia tagliato sopra/sotto */
-    height: 100vh;
+.spazio-foto {width: 400px;         /* La larghezza fissa che hai scelto */
+    height: 100vh;        /* Altezza intera */
+    margin: 0 auto;       /* CENTRA la sezione orizzontalmente nel PC */
     overflow: hidden;
-    position: relative;
-    padding: 0;
-    background-color: #000; /* Sfondo nero per il video */
+    padding: 2px;
+    background-color: white;
+    display: flex;        /* Necessario per centrare il contenuto interno */
+    align-items: center;
+    justify-content: center;
 }
 
 .spazio-foto .photo-container {
@@ -167,11 +168,9 @@ a, button, .play-button {
 
 #video-element {
     /* Assicura che il video copra l'area e sia centrato */
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    min-width: 100%;
-    min-height: 100%;
+    max-width: 100%;      /* Impedisce al video di uscire dai 500px */
+    height: auto;         /* Mantiene le proporzioni originali */
+    object-fit: contain;
 }
 
 
@@ -265,12 +264,16 @@ a, button, .play-button {
 }
 
 /* Extra Section */
-.extra-section {
+.extra-section {display: flex;
+    justify-content: center; /* Centra orizzontalmente il container */
+    align-items: center;     /* Centra verticalmente */
     text-align: center;
-    padding: 50px 20px;
-    background-color: #E52D40; /* Colore di enfasi */
+    padding: 60px 20px;      /* Padding verticale 60, orizzontale ridotto per sicurezza */
+    background-color: #ff9016;
     color: white;
     border-radius: 20px;
+    width: 100%;             /* Occupa tutto lo spazio */
+    box-sizing: border-box;
 }
 
 .extra-section h3 {
@@ -317,14 +320,14 @@ a, button, .play-button {
     background: #FFD23F; /* Colore di enfasi opposto */
     color: white;
     text-align: center;
-    padding: 20px 0;
-    border-radius: 20px;
+    padding: 10px 0;
+    border-radius: 2px;
 }
 .social-section {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 10px;
+    gap: 10px;
+    margin-top: 4px;
 }
 
 .social-item {
@@ -332,8 +335,8 @@ a, button, .play-button {
 }
 
 .social-logo {
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 90px;
     margin-bottom: 5px;
     transition: transform 0.3s ease;
 }
@@ -341,9 +344,10 @@ a, button, .play-button {
     transform: scale(1.1);
 }
 .social-item p a {
-    color: white;
+    color: black;
     text-decoration: none;
-    font-size: 1rem;
+    font-size: 24px;
+
 }
 
 
@@ -413,18 +417,20 @@ a, button, .play-button {
 }
 /* --- SEZIONE CITTÀ --- */
 .citta-sezione {
-    padding: 60px 0;
+    padding: 30px 0;
     background-color: #ffffff;
 }
 
 /* Slider Orizzontale */
-.citta-grid {
-    display: flex;
+.citta-grid {display: flex;
     overflow-x: auto;
-    gap: 44px;
-    padding: 20px 10px;
+    gap: 70px;
+    padding: 40px 10px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+
+    /* MODIFICA FONDAMENTALE */
+    justify-content: safe center;
 }
 
 /* Nascondi scrollbar */
@@ -432,9 +438,9 @@ a, button, .play-button {
     display: none;
 }
 
-/* Card Città */
+/* Aggiungi la transizione alla card esistente */
 .citta-card {
-    flex: 0 0 280px; /* Larghezza fissa delle card */
+    flex: 0 0 280px;
     scroll-snap-align: center;
     border-radius: 20px;
     overflow: hidden;
@@ -442,6 +448,27 @@ a, button, .play-button {
     background: #000;
     aspect-ratio: 3/4;
     box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+
+    /* AGGIUNGI QUESTA RIGA: serve per rendere il movimento fluido */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* EFFETTO HOVER: Ingrandimento e ombra più profonda */
+.citta-card:hover {
+    transform: translateY(-10px) scale(1.02); /* Sale leggermente e si ingrandisce */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+
+/* Rendi il link "Stretched" anche per le città */
+.citta-card .play-button::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    content: "";
 }
 
 /* Carosello Immagini */
@@ -517,13 +544,15 @@ a, button, .play-button {
     background-color: #ffffff;
 }
 
-.influencer-grid {
-    display: flex;
+.influencer-grid {display: flex;
     overflow-x: auto;
-    gap: 20px;
-    padding: 20px 10px;
+    gap: 70px;
+    padding: 40px 10px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
+
+    /* MODIFICA FONDAMENTALE */
+    justify-content: safe center;
 }
 
 .influencer-grid::-webkit-scrollbar {
@@ -537,7 +566,7 @@ a, button, .play-button {
     overflow: hidden;
     position: relative;
     background: #fff;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     transition: transform 0.7s ease;
 }
 /* 1. Rendiamo la card il punto di riferimento */
@@ -566,7 +595,7 @@ a, button, .play-button {
 /* 4. Effetto Hover su tutta la card */
 .influencer-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
     cursor: pointer;
 }
 .influencer-card:hover {
@@ -593,12 +622,12 @@ a, button, .play-button {
     z-index: 2;
 }
 
-.influencer-overlay-text h3 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #fff;
+.influencer-card:hover .influencer-overlay-text h3 a {
+    color: aquamarine !important;
+    display: inline-block;
+    transform: scale(1.1); /* Ingrandisce il nome del 10% */
+    transition: all 0.3s ease;
 }
-
 .influencer-info-bottom {
     padding: 15px;
     background: #fff;
@@ -696,6 +725,17 @@ a, button, .play-button {
         flex-direction: column; /* Impila le colonne verticalmente */
     }
 
+    @media (max-width: 768px) {
+        /* ... altre tue regole ... */
 
+        .spazio-foto {
+            height: auto; /* Lascia che l'altezza si adatti al video */
+            aspect-ratio: 9/16; /* O la proporzione del tuo video */
+        }
+
+        #video-element {
+            object-fit: cover; /* Su mobile spesso è meglio coprire per non avere bande nere */
+        }
+    }
 
 }
